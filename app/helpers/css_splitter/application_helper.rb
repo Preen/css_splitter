@@ -5,7 +5,7 @@ module CssSplitter
       split_count = options.delete(:split_count) || 2
 
       sources.map do |source|
-        split_sources = (2..split_count).map { |index| "#{source}_split#{index}" }
+        split_sources = (2..split_count).map { |index| "#{source}_split#{index}#{@css_splitter_query}" }
         split_options = options.dup
         if Rails.env == 'development' && !split_options.key?(:debug)
           split_options[:debug] = false
